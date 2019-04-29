@@ -1,5 +1,5 @@
 const mapboxgl = require("mapbox-gl");
-
+const markerFactory = require('./marker')
 mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RhbndhdGFuYWJlIiwiYSI6ImNqdjJpdWx2cTI1YTMzeW8wMnB5ejM5dWUifQ.4wLj2OKbpmgLdWMbCexAQg';
 
 const map = new mapboxgl.Map({
@@ -9,11 +9,10 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
 });
 
-const flag = document.createElement('div');
-flag.style.width = "32px";
-flag.style.height = "39px";
-flag.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
-new mapboxgl.Marker(flag).setLngLat([-74.009151, 40.705086]).addTo(map);
+
+markerFactory('hotel', [-74.009151, 40.705086]).addTo(map);
+markerFactory('activity', [-87.641, 41.895]).addTo(map);
+
 
 // map.on('load', function() {
 //     // Insert the layer beneath any symbol layer.
